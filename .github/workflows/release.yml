@@ -19,12 +19,12 @@ jobs:
       contents: write # 允许创建 Release / 上传产物
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       # 与 rust-toolchain.toml 保持一致（MSVC 1.88）。rust-toolchain.toml 会在
@@ -65,7 +65,7 @@ jobs:
 
       # 无论是否打 tag，都把安装包作为 workflow 产物上传，方便随时下载/自测。
       - name: Upload installer as workflow artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: claude-limit-windows-nsis
           path: src-tauri/target/release/bundle/nsis/*.exe
