@@ -1,0 +1,4 @@
+[toolchain]
+# Tauri on Windows is most reliable on the MSVC ABI. Both GNU and MSVC 1.88
+# toolchains are installed on this machine; pin MSVC for this project.
+channel = "1.88-x86_64-pc-windows-msvc"

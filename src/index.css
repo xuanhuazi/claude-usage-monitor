@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ */
+/* Semantic design tokens — Anthropic / Claude visual language.        */
+/* Colors live as CSS variables so they flip with [data-theme] without */
+/* needing a `dark:` variant on every utility.                          */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-base: var(--c-base);
+  --color-surface: var(--c-surface);
+  --color-elevated: var(--c-elevated);
+  --color-border: var(--c-border);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-accent-hover: var(--c-accent-hover);
+  --color-success: var(--c-success);
+  --color-warn: var(--c-warn);
+  --color-danger: var(--c-danger);
+
+  --font-sans: "Inter Variable", system-ui, -apple-system, sans-serif;
+  --font-serif: "Fraunces Variable", Georgia, "Times New Roman", serif;
+
+  --radius-xl: 18px;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+}
+
+:root,
+[data-theme="light"] {
+  --c-base: #f5f4ef;
+  --c-surface: #ffffff;
+  --c-elevated: #fbfaf7;
+  --c-border: #e7e4dc;
+  --c-ink: #1a1a18;
+  --c-muted: #76746c;
+  --c-accent: #d97757;
+  --c-accent-soft: #f3e2da;
+  --c-accent-hover: #c56646;
+  --c-success: #5a8a6b;
+  --c-warn: #c98a2b;
+  --c-danger: #c15f3c;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --c-base: #1c1b1a;
+  --c-surface: #262624;
+  --c-elevated: #2e2d2a;
+  --c-border: #3a3835;
+  --c-ink: #f0eee6;
+  --c-muted: #a6a299;
+  --c-accent: #e08769;
+  --c-accent-soft: #3a2e28;
+  --c-accent-hover: #ec9279;
+  --c-success: #82ad90;
+  --c-warn: #e0b45c;
+  --c-danger: #d8795b;
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--c-border);
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background-color: var(--c-base);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv05", "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 540;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--c-accent-soft);
+  }
+  /* Slim, warm scrollbars */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--c-border);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 1px 2px rgba(20, 19, 17, 0.04);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: var(--radius-md);
+    padding: 0.5rem 0.9rem;
+    font-size: 0.86rem;
+    font-weight: 500;
+    border: 1px solid var(--c-border);
+    background: var(--c-surface);
+    color: var(--c-ink);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  }
+  .btn:hover {
+    background: var(--c-elevated);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-accent {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+    color: #fff;
+  }
+  .btn-accent:hover {
+    background: var(--c-accent-hover);
+    border-color: var(--c-accent-hover);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    background: var(--c-accent-soft);
+    color: var(--c-accent-hover);
+  }
+}

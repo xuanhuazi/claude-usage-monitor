@@ -1,0 +1,5 @@
+# Pin transitive dependencies to versions compatible with the installed
+# rustc (1.88). Without this, the resolver picks crates like notify-rust 4.18
+# which require rustc 1.89 and fails to build.
+[resolver]
+incompatible-rust-versions = "fallback"
