@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Claude 额度监控 — 实时监听 Claude 订阅版额度与用量"
 authors = ["fengdiqing <fengdiqing8@gmail.com>"]
 license = "MIT"
+repository = "https://github.com/xuanhuazi/claude-usage-monitor"
 edition = "2021"
 rust-version = "1.88"
 
